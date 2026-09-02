@@ -88,4 +88,5 @@ app.patch("/api/tasks/:id/toggle",(req,res)=>{
 app.delete("/api/tasks/:id",(req,res)=>{const db=loadDB();db.tasks=db.tasks.filter(t=>t.id!==req.params.id);saveDB(db);res.sendStatus(204);});
 
 app.get("*",(req,res)=>res.sendFile(path.join(__dirname,"public","index.html")));
-app.listen(PORT,()=>console.log(`StudyPulse running at http://localhost:${PORT}`));
+
+module.exports = app;
