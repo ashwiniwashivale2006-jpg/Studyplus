@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudyPulse – Smart Study Planner</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-icon">✦</span><div><b>StudyPulse</b><small>Smart Study Planner</small></div></div>
+    <nav>
+      <button class="nav-item active" data-page="dashboard">⌂ <span>Dashboard</span></button>
+      <button class="nav-item" data-page="tasks">✓ <span>My Tasks</span></button>
+      <button class="nav-item" data-page="subjects">▦ <span>Subjects</span></button>
+      <button class="nav-item" data-page="calendar">◷ <span>Calendar</span></button>
+      <button class="nav-item" data-page="progress">↗ <span>Progress</span></button>
+    </nav>
+    <div class="sidebar-bottom">
+      <div class="tip"><strong>Study tip</strong><p>Small, consistent sessions beat last-minute cramming.</p></div>
+      <button class="nav-item">⚙ <span>Settings</span></button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div class="mobile-brand">✦ StudyPulse</div>
+      <div class="search">⌕ <input id="searchInput" placeholder="Search tasks or subjects..."></div>
+      <div class="profile"><div class="avatar">A</div><div><b>Ashwini</b><small>Student</small></div><button id="logoutBtn" class="text-btn">Logout</button></div>
+    </header>
+
+    <section id="dashboard" class="page active-page">
+      <div class="welcome">
+        <div><span class="eyebrow">WEDNESDAY, SEPTEMBER 2</span><h1>Good afternoon, Ashwini! 👋</h1><p>Let's make today a productive one.</p></div>
+        <button class="primary" id="addTaskBtn">＋ Add New Task</button>
+      </div>
+
+      <div class="stats">
+        <div class="stat-card"><div class="stat-icon purple">✓</div><div><span>Total Tasks</span><strong id="totalTasks">12</strong><small>+3 this week</small></div></div>
+        <div class="stat-card"><div class="stat-icon blue">◷</div><div><span>Pending</span><strong id="pendingTasks">5</strong><small>Keep going!</small></div></div>
+        <div class="stat-card"><div class="stat-icon green">★</div><div><span>Completed</span><strong id="completedTasks">7</strong><small>58% complete</small></div></div>
+        <div class="stat-card"><div class="stat-icon orange">⌁</div><div><span>Overall Progress</span><strong>68%</strong><small>+8% this month</small></div></div>
+      </div>
+
+      <div class="grid">
+        <div class="panel large">
+          <div class="panel-head"><div><h2>Today's Tasks</h2><p>Stay focused on what matters today.</p></div><button class="text-btn" data-page-link="tasks">View all →</button></div>
+          <div id="taskList" class="task-list"></div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head"><div><h2>Subject Progress</h2><p>Your current performance</p></div></div>
+          <div class="subject-progress">
+            <div><div class="row"><b>Data Structures</b><span>82%</span></div><div class="bar"><i style="width:82%"></i></div></div>
+            <div><div class="row"><b>Web Development</b><span>74%</span></div><div class="bar"><i style="width:74%"></i></div></div>
+            <div><div class="row"><b>Computer Organization</b><span>61%</span></div><div class="bar"><i style="width:61%"></i></div></div>
+            <div><div class="row"><b>Environmental Studies</b><span>49%</span></div><div class="bar"><i style="width:49%"></i></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid lower">
+        <div class="panel">
+          <div class="panel-head"><div><h2>Upcoming Deadlines</h2><p>Don't miss an important submission.</p></div></div>
+          <div class="deadline"><div class="date-box"><b>05</b><small>SEP</small></div><div><b>Data Structures Assignment</b><span>Data Structures · 3 days left</span></div><em class="high">High</em></div>
+          <div class="deadline"><div class="date-box"><b>08</b><small>SEP</small></div><div><b>HTML Mini Project</b><span>Web Development · 6 days left</span></div><em class="medium">Medium</em></div>
+          <div class="deadline"><div class="date-box"><b>12</b><small>SEP</small></div><div><b>COA Practical Preparation</b><span>Computer Organization · 10 days left</span></div><em class="low">Low</em></div>
+        </div>
+        <div class="panel focus">
+          <div class="focus-ring"><strong>68%</strong><span>Weekly goal</span></div>
+          <div><h2>You're on track!</h2><p>You've completed 17 of your 25 planned study sessions this week.</p><button class="secondary" data-page-link="progress">View Progress</button></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tasks" class="page"><div class="page-title"><div><h1>My Tasks</h1><p>Create, organize and complete your study tasks.</p></div><button class="primary" id="addTaskBtn2">＋ Add Task</button></div><div class="panel"><div id="allTasks" class="task-list"></div></div></section>
+    <section id="subjects" class="page"><div class="page-title"><div><h1>Subjects</h1><p>Track your progress across every subject.</p></div><button class="primary">＋ Add Subject</button></div><div class="subject-grid"></div></section>
+    <section id="calendar" class="page"><div class="page-title"><div><h1>Calendar</h1><p>Your deadlines at a glance.</p></div></div><div class="panel calendar"><h2>September 2026</h2><div class="week"><b>Sun</b><b>Mon</b><b>Tue</b><b>Wed</b><b>Thu</b><b>Fri</b><b>Sat</b></div><div id="calendarGrid" class="calendar-grid"></div></div></section>
+    <section id="progress" class="page"><div class="page-title"><div><h1>Progress</h1><p>See how consistently you're studying.</p></div></div><div class="progress-dashboard"><div class="panel"><h2>Weekly Study Goal</h2><div class="big-progress"><div class="circle"><strong>68%</strong></div><div><h2>17 / 25 sessions</h2><p>8 sessions remaining to reach your weekly goal.</p></div></div></div><div class="panel"><h2>Completion Summary</h2><div class="summary-row"><span>Completed</span><b>58%</b></div><div class="bar"><i style="width:58%"></i></div><div class="summary-row"><span>Pending</span><b>42%</b></div><div class="bar"><i style="width:42%"></i></div></div></div></section>
+  </main>
+
+  <div id="authModal" class="modal"><div class="modal-card"><h2>StudyPulse Login</h2><p>Use the demo account or create your own account.</p><form id="loginForm"><label>Email<input id="loginEmail" type="email" value="ashwini@example.com" required></label><label>Password<input id="loginPassword" type="password" value="demo123" required></label><button class="primary full">Login</button></form><hr><p>New student? <button id="registerToggle" class="text-btn">Create account</button></p><form id="registerForm" style="display:none"><label>Name<input id="regName" required></label><label>Email<input id="regEmail" type="email" required></label><label>Password<input id="regPassword" type="password" required></label><button class="primary full">Register</button></form></div></div>
+  <div id="modal" class="modal"><div class="modal-card"><button class="close" id="closeModal">×</button><h2>Add New Task</h2><p>Create a task and it will appear on your dashboard.</p><form id="taskForm"><label>Task title<input id="taskTitle" required placeholder="e.g. Practice linked lists"></label><label>Subject<select id="taskSubject"><option>Data Structures</option><option>Web Development</option><option>Computer Organization</option><option>Environmental Studies</option></select></label><label>Deadline<input id="taskDeadline" type="date" required></label><label>Priority<select id="taskPriority"><option>High</option><option>Medium</option><option>Low</option></select></label><button class="primary full">Create Task</button></form></div></div>
+  <script src="script.js"></script><script>
+const auth=document.querySelector("#authModal");
+if(!localStorage.getItem("studypulseUser")) auth.classList.add("show");
+document.querySelector("#loginForm").onsubmit=async e=>{e.preventDefault();try{const d=await api("/api/login",{method:"POST",body:JSON.stringify({email:loginEmail.value,password:loginPassword.value})});localStorage.setItem("studypulseUser",JSON.stringify(d.user));location.reload()}catch(x){alert(x.message)}};
+document.querySelector("#registerToggle").onclick=()=>{loginForm.style.display="none";registerForm.style.display="block"};
+document.querySelector("#registerForm").onsubmit=async e=>{e.preventDefault();try{const d=await api("/api/register",{method:"POST",body:JSON.stringify({name:regName.value,email:regEmail.value,password:regPassword.value})});localStorage.setItem("studypulseUser",JSON.stringify(d.user));location.reload()}catch(x){alert(x.message)}};
+document.querySelector("#logoutBtn").onclick=()=>{localStorage.removeItem("studypulseUser");location.reload()};
+</script>
+</body>
+</html>
