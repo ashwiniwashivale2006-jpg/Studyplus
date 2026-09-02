@@ -18,4 +18,9 @@ function populateSubjects(){$("#taskSubject").innerHTML=subjects.map(s=>`<option
 $("#addTaskBtn").onclick=openModal;$("#addTaskBtn2").onclick=openModal;$("#closeModal").onclick=closeModal;modal.onclick=e=>{if(e.target===modal)closeModal()};
 $("#taskForm").onsubmit=async e=>{e.preventDefault();await api("/api/tasks",{method:"POST",body:JSON.stringify({userId:currentUser.id,title:$("#taskTitle").value,subjectId:$("#taskSubject").value,deadline:$("#taskDeadline").value,priority:$("#taskPriority").value})});e.target.reset();closeModal();await refresh();showPage("tasks");};
 $("#searchInput").oninput=e=>{const q=e.target.value.toLowerCase();renderTaskList($("#allTasks"),tasks.filter(t=>(t.title+" "+t.subject).toLowerCase().includes(q)));showPage("tasks");};
-setUserName();refresh().catch(err=>alert("Start the backend with: npm start\n\n"+err.message));
+setUserName();
+
+refresh().catch(err => {
+  console.error("StudyPulse API error:", err);
+  alert("StudyPulse could not load your data.\n\nError: " + err.message);
+});
