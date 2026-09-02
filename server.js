@@ -5,7 +5,7 @@ const crypto = require("crypto");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const DB_FILE = path.join(__dirname, "data", "db.json");
+const DB_FILE = path.join('/tmp', 'db.json');
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
